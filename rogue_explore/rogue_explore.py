@@ -131,7 +131,7 @@ class RogueExplore(object):
         self.bg.title("Rogue Explore")
 
         self.sv = tk.StringVar()
-        label = tk.Label(textvariable=self.sv, justify="left", font="consolas", foreground="white",
+        label = tk.Label(textvariable=self.sv, justify="left", font="courier", foreground="white",
                               background='black')
         label.pack()
         self.last_reward_info = "None"
