@@ -1,6 +1,9 @@
 import readchar
 from rogue_explore import RogueExplore, DEFAULT_CONFIG, DungeonGenerator
 
+import gym
+import rogue_explore
+
 """
 このプログラムを実行するためには「readchar」というPythonパッケージをインストールする必要があります。
 また、キー入力はGUIではなくコンソールに対して行うようにしてください。
@@ -28,13 +31,16 @@ Key to Action Mapping:
 
 if __name__ == "__main__":
     # create env
-    dg = DungeonGenerator(
-        place_rations=DEFAULT_CONFIG['enable_rations_and_hunger'],
-        pooling=True,
-        depth=DEFAULT_CONFIG['depth'],
-        seed_range=DEFAULT_CONFIG['seed_range']
-    )
-    env = RogueExplore(dungeon_generator=dg, config=DEFAULT_CONFIG, render=True)
+    env = gym.make("RogueExplore-v0")
+
+    # # RogueExplore interface
+    # dg = DungeonGenerator(
+    #     place_rations=DEFAULT_CONFIG['enable_rations_and_hunger'],
+    #     pooling=True,
+    #     depth=DEFAULT_CONFIG['depth'],
+    #     seed_range=DEFAULT_CONFIG['seed_range']
+    # )
+    # env = RogueExplore(dungeon_generator=dg, config=DEFAULT_CONFIG, render=True)
 
     # loop
     env.reset()
@@ -49,5 +55,14 @@ if __name__ == "__main__":
 
         if action == 5:
             break
-        state, reward, done, info = env.step(action)
+
+        state, reward, terminated, truncated, info = env.step(action)
+        done = terminated or truncated
+
+        # # if you are using old version of gym package or use RogueExplore interface,
+        # # please use this "step" method instead.
+        # state, reward, done, info = env.step(action)
+
         env.render()
+
+    env.close()
