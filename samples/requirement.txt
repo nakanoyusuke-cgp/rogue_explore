@@ -1,0 +1,5 @@
+# install "rogue_explore" from parent directory
+../
+
+# use for "./human_play.py"
+readchar
