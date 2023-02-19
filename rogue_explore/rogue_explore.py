@@ -137,6 +137,9 @@ class RogueExplore(object):
         self.last_reward_info = "None"
         self.enable_render = True
 
+    def close_renderer(self):
+        self.bg.destroy()
+
     def render(self):
         assert self.enable_render, 'render is not enabled'
         assert self.initialized, 'call "reset()" before call "render()"'
