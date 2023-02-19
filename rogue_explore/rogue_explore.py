@@ -2,11 +2,6 @@ import numpy as np
 import tkinter as tk
 import random
 
-# from src.envs.rogueExplore.dungeonGenerator import DungeonGenerator
-# from src.envs.rogueExplore.imageRepr import ImageRepr
-# from src.envs.rogueExplore.rewardFunc import RewardFunc
-# from src.envs.rogueExplore.dungeon import Symbols
-
 from rogue_explore.dungeon_generator import DungeonGenerator
 from rogue_explore.image_repr import ImageRepr
 from rogue_explore.reward_func import RewardFunc
@@ -139,6 +134,9 @@ class RogueExplore(object):
 
     def close_renderer(self):
         self.bg.destroy()
+
+    def close(self):
+        self.close_renderer()
 
     def render(self):
         assert self.enable_render, 'render is not enabled'
