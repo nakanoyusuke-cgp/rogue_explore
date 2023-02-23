@@ -1,5 +1,5 @@
-import gym
-from gym.spaces import Tuple, Discrete, Box
+import gymnasium as gym
+from gymnasium.spaces import Tuple, Discrete, Box
 import numpy as np
 
 from rogue_explore.rogue_explore import RogueExplore, DEFAULT_CONFIG

@@ -2,7 +2,7 @@ from rogue_explore.rogue_explore import RogueExplore, DEFAULT_CONFIG, init_dunge
 from rogue_explore.dungeon_generator import DungeonGenerator
 from rogue_explore.dungeon import Symbols, directions, characters, Dungeon
 
-from gym.envs.registration import register
+from gymnasium.envs.registration import register
 from rogue_explore.wrapper import RogueExploreWrapper
 
 

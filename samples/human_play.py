@@ -1,7 +1,7 @@
 import readchar
 from rogue_explore import RogueExplore, DEFAULT_CONFIG, DungeonGenerator
 
-import gym
+import gymnasium as gym
 import rogue_explore
 
 """
