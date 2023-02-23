@@ -20,5 +20,5 @@ pip install .
   ```
 
 ## 更新履歴
-2023/2/23 gymnasium対応版を作成, readmeを更新
+2023/2/23 gymnasium対応版を作成, readmeを更新 \
 2023/2/20 公開
