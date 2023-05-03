@@ -35,8 +35,13 @@ pip install .
   ```
   git clone -b gymnasium git@github.com:nakanoyusuke-cgp/rogue_explore.git
   ```
+- 以前のgymインタフェースも利用できるように、gym0.21に対応したバージョンも仮作成しました。こちらは以下のコマンドからクローンしてください。
+  ```
+  git clone -b for-gym0.21 git@github.com:nakanoyusuke-cgp/rogue_explore.git
+  ```
 
 ## 更新履歴
+2023/5/3 gym0.21に対応したバージョンを仮作成
 2023/5/3 画像表現(symbols, gray_scale)に関わらず観測の次元数を統一するように変更 \
 2023/2/23 gymnasium対応版を作成, readmeを更新 \
 2023/2/20 公開
