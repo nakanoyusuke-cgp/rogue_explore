@@ -42,9 +42,7 @@ class RogueExploreWrapper(gym.Env):
 
     def step(self, action):
         s, r, d, i = self.env.step(action)
-        terminated = d and (i["reward_info"] == "clear")
-        truncated = d and (i["reward_info"] != "clear")
-        return self.discrete_image(s[0]), r, terminated, truncated, i
+        return self.discrete_image(s[0]), r, d, i
 
     def render(self):
         return self.env.render()

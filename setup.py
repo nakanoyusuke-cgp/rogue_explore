@@ -6,6 +6,6 @@ setup(
     version="1.0.0",
     packages=find_packages(),
     install_requires=[
-        "gym==0.26.2", "tqdm", "numpy"
+        "gym==0.21.0", "tqdm", "numpy"
     ],
 )
