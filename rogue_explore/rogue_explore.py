@@ -107,7 +107,7 @@ class RogueExplore(object):
             img_shape = (size_y, size_x)
 
         if self.style == 'gray_scale':
-            obs_shape = img_shape
+            obs_shape = img_shape + (1,)
         elif self.style == 'symbols':
             obs_shape = img_shape + (len(Symbols) + (1 if self.enable_history else 0),)
         else:

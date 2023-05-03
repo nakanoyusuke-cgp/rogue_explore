@@ -45,7 +45,7 @@ class ImageRepr(object):
     def _gray_scale(layers):
         c = layers.shape[-1] - 1
         # return np.argmax(layers, axis=2) / c
-        return np.divide(np.argmax(layers, axis=2), c, dtype=np.float32)
+        return np.divide(np.argmax(layers, axis=2), c, dtype=np.float32)[..., np.newaxis]
 
     @staticmethod
     def _symbols(layers):
