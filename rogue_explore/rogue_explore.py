@@ -2,11 +2,6 @@ import numpy as np
 import tkinter as tk
 import random
 
-# from src.envs.rogueExplore.dungeonGenerator import DungeonGenerator
-# from src.envs.rogueExplore.imageRepr import ImageRepr
-# from src.envs.rogueExplore.rewardFunc import RewardFunc
-# from src.envs.rogueExplore.dungeon import Symbols
-
 from rogue_explore.dungeon_generator import DungeonGenerator
 from rogue_explore.image_repr import ImageRepr
 from rogue_explore.reward_func import RewardFunc
@@ -131,11 +126,17 @@ class RogueExplore(object):
         self.bg.title("Rogue Explore")
 
         self.sv = tk.StringVar()
-        label = tk.Label(textvariable=self.sv, justify="left", font="consolas", foreground="white",
+        label = tk.Label(textvariable=self.sv, justify="left", font="courier", foreground="white",
                               background='black')
         label.pack()
         self.last_reward_info = "None"
         self.enable_render = True
+
+    def close_renderer(self):
+        self.bg.destroy()
+
+    def close(self):
+        self.close_renderer()
 
     def render(self):
         assert self.enable_render, 'render is not enabled'
@@ -265,43 +266,6 @@ def init_dungeon_params(config=DEFAULT_CONFIG['dungeon_params']):
     dp.MAX_NUM_RATION = config['MAX_NUM_RATION']
 
 
-def human_play(env):
-    import readchar
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-
-    state = env.reset()
-    env.render()
-    done = False
-    while not done:
-        key_map = {"w": 3, "a": 4, "s": 1, "d": 2, "e": 0, "q": 5}
-        try:
-            action = key_map[readchar.readkey()]
-        except KeyError:
-
-            print("========")
-            print(f"img_shape:{state[0].shape}, img_dtype:{state[0].dtype} vec:{state[1]}")
-            print("========")
-            if env.style == 'gray_scale':
-                sns.heatmap(state[0])
-                plt.show()
-            elif env.style == 'symbols':
-                for i in range(state[0].shape[-1]):
-                    sns.heatmap(state[0][..., i])
-                    plt.show()
-            else:
-                assert False
-            continue
-            pass
-
-        if action == 5:
-            break
-        state, reward, done, info = env.step(action)
-        env.render()
-        msg = f'reward{reward}'
-        print(msg)
-
-
 if __name__ == "__main__":
     conf = {
         'enable_rations_and_hunger': True,
@@ -344,5 +308,3 @@ if __name__ == "__main__":
 
     _dungeon_generator = DungeonGenerator(conf['enable_rations_and_hunger'], pooling=True, depth=10, seed_range=conf['seed_range'])
     _rogue_explore = RogueExplore(_dungeon_generator, config=conf, render=True)
-
-    human_play(_rogue_explore)
