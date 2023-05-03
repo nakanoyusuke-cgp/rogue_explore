@@ -37,5 +37,6 @@ pip install .
   ```
 
 ## 更新履歴
+2023/5/3 画像表現(symbols, gray_scale)に関わらず観測の次元数を統一するように変更 \
 2023/2/23 gymnasium対応版を作成, readmeを更新 \
 2023/2/20 公開
